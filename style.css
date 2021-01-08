@@ -1,0 +1,97 @@
+:root {
+  --background-color: #fff;
+  --font-color: #444;
+  --title-background-color: #fff;
+
+  --font: "Varela Round", sans-serif;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: var(--font);
+  color: var(--font-color);
+  background-color: var(--background-color);
+  font-size: 62.5%;
+  line-height: 1.6;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+header {
+  font-size: 2.4rem;
+}
+
+h1 {
+  line-height: 1.2;
+}
+
+.header {
+  padding: 5rem;
+}
+
+.title {
+  font-size: 10rem;
+  text-align: center;
+}
+
+.main {
+  padding: 5rem;
+}
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 450px;
+  height: 450px;
+  margin: 0px auto;
+}
+
+.field {
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  font-size: 10rem;
+  cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  html {
+    font-size: 41%;
+  }
+
+  .gameboard {
+    width: 300px;
+    height: 300px;
+  }
+
+  .field {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 430px) {
+  html {
+    font-size: 29%;
+  }
+
+  .gameboard {
+    width: 210px;
+    height: 210px;
+  }
+
+  .field {
+    width: 70px;
+    height: 70px;
+  }
+}
