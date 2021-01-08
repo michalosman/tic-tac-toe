@@ -1,6 +1,7 @@
 :root {
   --background-color: #c5c3c6;
-  --font-color: #46494c;
+  --font-color: #46494b;
+  --font-color-hover: #bbb;
   --header-background-color: #4c5c68;
   --header-font-color: #b0e4db;
   --field-background-color: #ededee;
@@ -68,7 +69,16 @@ h1 {
   border: 1px solid var(--border-color);
   font-size: 10rem;
   background-color: var(--field-background-color);
-  cursor: pointer;
+}
+
+.gameboard.x .field:not(.filled):hover::after {
+  content: "X";
+  color: var(--font-color-hover);
+}
+
+.gameboard.o .field:not(.filled):hover::after {
+  content: "O";
+  color: var(--font-color-hover);
 }
 
 @media (max-width: 650px) {
