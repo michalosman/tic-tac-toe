@@ -120,7 +120,7 @@ button {
   outline: none;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 660px) {
   html {
     font-size: 41%;
   }
@@ -136,7 +136,7 @@ button {
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 440px) {
   html {
     font-size: 29%;
   }
