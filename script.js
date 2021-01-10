@@ -23,9 +23,9 @@ const gameBoard = (() => {
   };
 
   const reset = () => {
-    board.forEach((field) => {
-      field = "";
-    });
+    for (let i = 0; i < board.length; i++) {
+      board[i] = "";
+    }
   };
 
   return { setField, getField, reset };
@@ -128,7 +128,7 @@ const gameController = (() => {
 
   const reset = () => {
     round = 1;
-    isOver = false;
+    isGameOver = false;
   };
 
   return { playRound, getCurrentPlayerSign, isOver, reset };
