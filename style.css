@@ -6,7 +6,7 @@
   --field-background-color: #ededee;
   --field-background-color-hover: #d8e4e9;
   --border-color: #555;
-  --button-border: #2a3a46;
+  --blue-border-color: #2a3a46;
   --button-background-color: #4c5c68;
   --button-hover-background: #3b4b57;
   --button-active-background: #2a3a46;
@@ -49,6 +49,7 @@ button {
 }
 
 .header {
+  border-bottom: 3px solid var(--blue-border-color);
   padding: 5rem;
   background-color: var(--header-background-color);
   color: var(--header-font-color);
@@ -101,7 +102,7 @@ button {
 
 .restart-button {
   padding: 10px 20px;
-  border: 2px solid var(--button-border);
+  border: 3px solid var(--blue-border-color);
   border-radius: 7px;
   background-color: var(--button-background-color);
   color: var(--header-font-color);
