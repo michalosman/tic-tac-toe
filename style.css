@@ -6,9 +6,10 @@
   --field-background-color: #ededee;
   --field-background-color-hover: #d8e4e9;
   --border-color: #555;
+  --button-border: #2a3a46;
+  --button-background-color: #4c5c68;
   --button-hover-background: #3b4b57;
   --button-active-background: #2a3a46;
-
   --font: "Varela Round", sans-serif;
 }
 
@@ -21,9 +22,9 @@
 }
 
 html {
-  font-family: var(--font);
-  color: var(--font-color);
   background-color: var(--background-color);
+  color: var(--font-color);
+  font-family: var(--font);
   font-size: 62.5%;
   line-height: 1.6;
 }
@@ -43,6 +44,8 @@ h1 {
 button {
   color: inherit;
   font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
 }
 
 .header {
@@ -76,12 +79,12 @@ button {
 }
 
 .field {
-  text-align: center;
   width: 150px;
   height: 150px;
   border: 1px solid var(--border-color);
-  font-size: 10rem;
   background-color: var(--field-background-color);
+  font-size: 10rem;
+  text-align: center;
   cursor: pointer;
   user-select: none;
 }
@@ -98,11 +101,11 @@ button {
 
 .restart-button {
   padding: 10px 20px;
-  font-size: 5rem;
-  background-color: var(--header-background-color);
+  border: 2px solid var(--button-border);
+  border-radius: 7px;
+  background-color: var(--button-background-color);
   color: var(--header-font-color);
-  border: none;
-  border-radius: 10px;
+  font-size: 5rem;
 }
 
 .restart-button:hover {
