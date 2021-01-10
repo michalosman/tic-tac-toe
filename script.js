@@ -1,77 +1,52 @@
-const Player = (sign) => {
-  let _sign = sign;
+"use strict";
 
-  const setSign = (sign) => {
-    _sign = sign;
-  };
+const Player = (sign) => {
+  this.sign = sign;
 
   const getSign = () => {
-    return _sign;
+    return sign;
   };
 
-  return { setSign, getSign };
+  return { getSign };
 };
 
 const gameBoard = (() => {
-  const fields = Array.from(document.querySelectorAll("[data-field]"));
+  const fields = [9];
 
-  const reset = () => {
-    fields.forEach((field) => (field = ""));
+  const addElement = (index, element) => {
+    fields[index] = element;
   };
 
-  const checkWin = () => {};
+  const reset = () => {
+    fields.forEach((field) => {
+      field = "";
+    });
+  };
 
-  const checkDraw = () => {};
+  //getArray
 
-  return {};
+  return { addElement, reset };
 })();
 
 const displayController = (() => {
   const gameboard = document.getElementById("gameboard");
-  const fields = document.querySelectorAll("[data-field]");
+  const fields = document.querySelectorAll(".field");
 
-  fields.forEach((field) =>
-    field.addEventListener("click", (e) => {
-      if (gameboard.classList.contains("x")) {
-        e.target.textContent = "X";
-      } else if (gameboard.classList.contains("o")) {
-        e.target.textContent = "O";
-      }
-      e.target.classList.add("filled");
-      gameboard.update();
-    })
-  );
+  //updateGameboard (gameBoard.getArray())
+  //resetGameboard
+  //field.addEventListener(click) - save field gameController currentTurn
+  //field.addEventListener(hover) - hover field gameController currentTurn
 
-  const reset = () => {
-    fields.forEach((field) => {
-      field.textContent = "";
-    });
-  };
-
-  const changeSign = () => {
-    if (gameboard.classList.contains("x")) {
-      gameboard.classList.remove("x");
-      gameboard.classList.add("o");
-    } else if (gameboard.classList.contains("o")) {
-      gameboard.classList.remove("o");
-      gameboard.classList.add("x");
-    }
-  };
-
-  const addSign = (sign) => {};
-
-  return { changeSign, reset };
+  return {};
 })();
 
 const gameController = (() => {
   const playerX = Player("X");
   const playerO = Player("O");
 
-  const start = () => {
-    reset();
-  };
+  //checkWinner
+  //changeTurn
+  //resetGame
 
-  const reset = () => {};
-
-  return { start };
+  return {};
 })();
