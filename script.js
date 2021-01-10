@@ -19,6 +19,7 @@ const gameBoard = (() => {
   };
 
   const getField = (index) => {
+    if (index > board.length) return;
     return board[index];
   };
 
@@ -36,20 +37,20 @@ const displayController = (() => {
   const messageElement = document.getElementById("message");
   const restartButton = document.getElementById("restart-button");
 
-  restartButton.addEventListener("click", (e) => {
-    gameBoard.reset();
-    gameController.reset();
-    updateGameboard();
-    setMessage("Player X turn");
-  });
-
   fieldElements.forEach((field) =>
     field.addEventListener("click", (e) => {
-      if (gameController.isOver() || e.target.textContent !== "") return;
+      if (gameController.getIsOver() || e.target.textContent !== "") return;
       gameController.playRound(e.target.dataset.index);
       updateGameboard();
     })
   );
+
+  restartButton.addEventListener("click", (e) => {
+    gameBoard.reset();
+    gameController.reset();
+    updateGameboard();
+    setMessageElement("Player X turn");
+  });
 
   const updateGameboard = () => {
     for (let i = 0; i < fieldElements.length; i++) {
@@ -57,39 +58,43 @@ const displayController = (() => {
     }
   };
 
-  const showPopup = (winner) => {
+  const setResultMessage = (winner) => {
     if (winner === "Draw") {
-      setMessage("It's draw!");
+      setMessageElement("It's draw!");
+    } else {
+      setMessageElement(`Player ${winner} has won!`);
     }
-    setMessage(`Player ${winner} has won!`);
   };
 
-  const setMessage = (message) => {
+  const setMessageElement = (message) => {
     messageElement.textContent = message;
   };
 
-  return { showPopup, setMessage };
+  return { setResultMessage, setMessageElement };
 })();
 
 const gameController = (() => {
   const playerX = Player("X");
   const playerO = Player("O");
   let round = 1;
-  let isGameOver = false;
+  let isOver = false;
 
   const playRound = (fieldIndex) => {
     gameBoard.setField(fieldIndex, getCurrentPlayerSign());
     if (checkWinner()) {
-      displayController.showPopup(getCurrentPlayerSign());
-      isGameOver = true;
+      displayController.setResultMessage(getCurrentPlayerSign());
+      isOver = true;
       return;
     }
     if (round === 9) {
-      isGameOver = true;
+      displayController.setResultMessage("Draw");
+      isOver = true;
       return;
     }
     round++;
-    displayController.setMessage(`Player ${getCurrentPlayerSign()} turn`);
+    displayController.setMessageElement(
+      `Player ${getCurrentPlayerSign()} turn`
+    );
   };
 
   const getCurrentPlayerSign = () => {
@@ -122,14 +127,14 @@ const gameController = (() => {
     return false;
   };
 
-  const isOver = () => {
-    return isGameOver;
+  const getIsOver = () => {
+    return isOver;
   };
 
   const reset = () => {
     round = 1;
-    isGameOver = false;
+    isOver = false;
   };
 
-  return { playRound, getCurrentPlayerSign, isOver, reset };
+  return { playRound, getIsOver, reset };
 })();
