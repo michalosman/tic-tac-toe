@@ -6,6 +6,8 @@
   --field-background-color: #ededee;
   --field-background-color-hover: #d8e4e9;
   --border-color: #555;
+  --button-hover-background: #3b4b57;
+  --button-active-background: #2a3a46;
 
   --font: "Varela Round", sans-serif;
 }
@@ -38,6 +40,11 @@ h1 {
   line-height: 1.2;
 }
 
+button {
+  color: inherit;
+  font-family: inherit;
+}
+
 .header {
   padding: 5rem;
   background-color: var(--header-background-color);
@@ -49,8 +56,14 @@ h1 {
   text-align: center;
 }
 
+.message {
+  padding: 20px;
+  font-size: 5rem;
+  text-align: center;
+}
+
 .main {
-  padding: 8rem;
+  padding: 2rem 8rem;
 }
 
 .gameboard {
@@ -75,6 +88,33 @@ h1 {
 
 .field:hover {
   background-color: var(--field-background-color-hover);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.restart-button {
+  padding: 10px 20px;
+  font-size: 5rem;
+  background-color: var(--header-background-color);
+  color: var(--header-font-color);
+  border: none;
+  border-radius: 10px;
+}
+
+.restart-button:hover {
+  background-color: var(--button-hover-background);
+}
+
+.restart-button:active {
+  background-color: var(--button-active-background);
+}
+
+.restart-button:focus {
+  outline: none;
 }
 
 @media (max-width: 650px) {
