@@ -60,7 +60,7 @@ const displayController = (() => {
 
   const setResultMessage = (winner) => {
     if (winner === "Draw") {
-      setMessageElement("It's draw!");
+      setMessageElement("It's a draw!");
     } else {
       setMessageElement(`Player ${winner} has won!`);
     }
