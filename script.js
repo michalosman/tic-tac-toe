@@ -49,7 +49,7 @@ const displayController = (() => {
     gameBoard.reset();
     gameController.reset();
     updateGameboard();
-    setMessageElement("Player X turn");
+    setMessageElement("Player X's turn");
   });
 
   const updateGameboard = () => {
@@ -93,7 +93,7 @@ const gameController = (() => {
     }
     round++;
     displayController.setMessageElement(
-      `Player ${getCurrentPlayerSign()} turn`
+      `Player ${getCurrentPlayerSign()}'s turn`
     );
   };
 
