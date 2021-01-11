@@ -40,7 +40,7 @@ const displayController = (() => {
   fieldElements.forEach((field) =>
     field.addEventListener("click", (e) => {
       if (gameController.getIsOver() || e.target.textContent !== "") return;
-      gameController.playRound(e.target.dataset.index);
+      gameController.playRound(parseInt(e.target.dataset.index));
       updateGameboard();
     })
   );
@@ -81,7 +81,7 @@ const gameController = (() => {
 
   const playRound = (fieldIndex) => {
     gameBoard.setField(fieldIndex, getCurrentPlayerSign());
-    if (checkWinner()) {
+    if (checkWinner(fieldIndex)) {
       displayController.setResultMessage(getCurrentPlayerSign());
       isOver = true;
       return;
@@ -101,7 +101,7 @@ const gameController = (() => {
     return round % 2 === 1 ? playerX.getSign() : playerO.getSign();
   };
 
-  const checkWinner = () => {
+  const checkWinner = (fieldIndex) => {
     const winConditions = [
       [0, 1, 2],
       [3, 4, 5],
@@ -113,18 +113,13 @@ const gameController = (() => {
       [2, 4, 6],
     ];
 
-    let testArray = [];
-
-    for (let i = 0; i < winConditions.length; i++) {
-      for (let j = 0; j < 3; j++) {
-        testArray.push(gameBoard.getField(winConditions[i][j]));
-      }
-      if (testArray.every((field) => field === getCurrentPlayerSign())) {
-        return true;
-      }
-      testArray = [];
-    }
-    return false;
+    return winConditions
+      .filter((combination) => combination.includes(fieldIndex))
+      .some((possibleCombination) =>
+        possibleCombination.every(
+          (index) => gameBoard.getField(index) === getCurrentPlayerSign()
+        )
+      );
   };
 
   const getIsOver = () => {
