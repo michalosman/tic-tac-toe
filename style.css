@@ -10,7 +10,7 @@
   --button-background-color: #4c5c68;
   --button-hover-background: #3b4b57;
   --button-active-background: #2a3a46;
-  --font: "Varela Round", sans-serif;
+  --font: 'Varela Round', sans-serif;
 }
 
 *,
@@ -22,19 +22,18 @@
 }
 
 html {
-  background-color: var(--background-color);
-  color: var(--font-color);
-  font-family: var(--font);
-  font-size: 62.5%;
-  line-height: 1.6;
+  /* footer support */
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-  font-size: 1.6rem;
-}
-
-header {
-  font-size: 2.4rem;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  font-family: var(--font);
+  line-height: 1.6;
+  /* footer support */
+  margin-bottom: 100px;
 }
 
 h1 {
@@ -42,32 +41,38 @@ h1 {
 }
 
 button {
+  border: none;
   color: inherit;
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
+  outline: none;
 }
 
+/* HEADER */
+
 .header {
+  padding: 20px;
   border-bottom: 3px solid var(--blue-border-color);
-  padding: 5rem;
   background-color: var(--header-background-color);
   color: var(--header-font-color);
 }
 
 .title {
-  font-size: 10rem;
+  font-size: 100px;
   text-align: center;
+}
+
+/* MAIN */
+
+.main {
+  padding: 0 20px;
 }
 
 .message {
-  padding: 20px;
-  font-size: 5rem;
+  padding: 20px 0;
+  font-size: 50px;
   text-align: center;
-}
-
-.main {
-  padding: 0 8rem;
 }
 
 .gameboard {
@@ -84,7 +89,7 @@ button {
   height: 150px;
   border: 1px solid var(--border-color);
   background-color: var(--field-background-color);
-  font-size: 10rem;
+  font-size: 100px;
   text-align: center;
   cursor: pointer;
   user-select: none;
@@ -106,7 +111,7 @@ button {
   border-radius: 7px;
   background-color: var(--button-background-color);
   color: var(--header-font-color);
-  font-size: 5rem;
+  font-size: 50px;
 }
 
 .restart-button:hover {
@@ -117,13 +122,44 @@ button {
   background-color: var(--button-active-background);
 }
 
-.restart-button:focus {
-  outline: none;
+/* FOOTER */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
 }
 
+.fa-github {
+  color: var(--font-color);
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: rotate(360deg) scale(1.2);
+}
+
+/* MEDIA QUERIES */
+
 @media (max-width: 660px) {
-  html {
-    font-size: 41%;
+  .title {
+    font-size: 60px;
+  }
+
+  .message {
+    font-size: 40px;
+  }
+
+  .restart-button {
+    font-size: 40px;
   }
 
   .gameboard {
@@ -134,21 +170,20 @@ button {
   .field {
     width: 100px;
     height: 100px;
+    font-size: 70px;
   }
 }
 
-@media (max-width: 440px) {
-  html {
-    font-size: 29%;
+@media (max-width: 420px) {
+  .title {
+    font-size: 50px;
   }
 
-  .gameboard {
-    width: 214px;
-    height: 214px;
+  .message {
+    font-size: 36px;
   }
 
-  .field {
-    width: 70px;
-    height: 70px;
+  .restart-button {
+    font-size: 36px;
   }
 }
