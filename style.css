@@ -33,7 +33,7 @@ body {
   font-family: var(--font);
   line-height: 1.6;
   /* footer support */
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 
 h1 {
